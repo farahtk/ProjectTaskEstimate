@@ -16,7 +16,7 @@ public class ProjectTaskEstimates {
 	ProjectTaskEstimates(){
 		//initializing for 10 tasks and 10 estimates 
 		Task = new int[taskSize][taskEstimateSize];
-		//initializing montecarlo estimates to be 100
+		//initializing Monte Carlo estimates to be 100
 		monteCarloEstimates = new int[monteCarloEstimateSize];
 	}
 	
@@ -28,16 +28,16 @@ public class ProjectTaskEstimates {
 		PTE.testProjectEstimate();
 	}
 	/**
-	 * test Function
+	 * Input Function
 	 */
 	void testProjectEstimate(){
-		//calling the task estimae initializer function
+		//calling the task estimate initializer function
 		intializeTaskEstimate();
-		//calling the estimator function
+		//calling the estimate function
 		projectEstimate();
 	}
 	/**
-	 * initailizing all the Task Estimates
+	 * initializing all the Task Estimates
 	 */
 	void intializeTaskEstimate(){
 		//input all estimates (between 1-10) for all the tasks
@@ -209,6 +209,7 @@ public class ProjectTaskEstimates {
 	 * Calculating the percentile for the project estimate
 	 */
 	int estimatePercentile(int percentile){
+		//calculating the index of array for the percentile 
 		double index = ((double)percentile/100)*monteCarloEstimateSize;
 		return monteCarloEstimates[(int)index-1];
 	}
