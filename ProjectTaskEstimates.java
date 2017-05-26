@@ -6,7 +6,7 @@ public class ProjectTaskEstimates {
 	 */
 	int[][] Task;
 	int[] monteCarloEstimates;
-	final int monteCarloEstimateSize = 1000;
+	final int monteCarloEstimateSize = 10000;
 	final int taskSize = 10;
 	final int taskEstimateSize = 10;
 	
