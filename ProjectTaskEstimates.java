@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class ProjectTaskEstimates {
 	/**
@@ -6,19 +7,9 @@ public class ProjectTaskEstimates {
 	 */
 	int[][] Task;
 	int[] monteCarloEstimates;
-	final int monteCarloEstimateSize = 10000;
-	final int taskSize = 10;
-	final int taskEstimateSize = 10;
-	
-	/**
-	 * Constructor
-	 */
-	ProjectTaskEstimates(){
-		//initializing for 10 tasks and 10 estimates 
-		Task = new int[taskSize][taskEstimateSize];
-		//initializing Monte Carlo estimates to be 100
-		monteCarloEstimates = new int[monteCarloEstimateSize];
-	}
+	int monteCarloEstimateSize = 0;
+	int taskSize = 0;
+	int taskEstimateSize = 0;
 	
 	/**
 	 * Main static function
@@ -40,137 +31,41 @@ public class ProjectTaskEstimates {
 	 * initializing all the Task Estimates
 	 */
 	void intializeTaskEstimate(){
-		//input all estimates (between 1-10) for all the tasks
-		/**
-		 * Task 1
-		 */
-		Task[0][0] = 6;
-		Task[0][1] = 3;
-		Task[0][2] = 5;	
-		Task[0][3] = 1;
-		Task[0][4] = 8;
-		Task[0][5] = 9;
-		Task[0][6] = 4;
-		Task[0][7] = 2;
-		Task[0][8] = 7;
-		Task[0][9] = 10;
-		/**
-		 * Task 2
-		 */
-		Task[1][0] = 6;
-		Task[1][1] = 3;
-		Task[1][2] = 5;
-		Task[1][3] = 1;
-		Task[1][4] = 8;
-		Task[1][5] = 9;
-		Task[1][6] = 4;
-		Task[1][7] = 2;
-		Task[1][8] = 7;
-		Task[1][9] = 10;
-		/**
-		 *  Task 3
-		 */
-		Task[2][0] = 6;
-		Task[2][1] = 3;
-		Task[2][2] = 5;
-		Task[2][3] = 1;
-		Task[2][4] = 8;
-		Task[2][5] = 9;
-		Task[2][6] = 4;
-		Task[2][7] = 2;
-		Task[2][8] = 7;
-		Task[2][9] = 10;
-		/**
-		 * Task 4
-		 */
-		Task[3][0] = 6;
-		Task[3][1] = 3;
-		Task[3][2] = 5;
-		Task[3][3] = 1;
-		Task[3][4] = 8;
-		Task[3][5] = 9;
-		Task[3][6] = 4;
-		Task[3][7] = 2;
-		Task[3][8] = 7;
-		Task[3][9] = 10;
-		/**
-		 * Task 5
-		 */
-		Task[4][0] = 6;
-		Task[4][1] = 3;
-		Task[4][2] = 5;
-		Task[4][3] = 1;
-		Task[4][4] = 8;
-		Task[4][5] = 9;
-		Task[4][6] = 4;
-		Task[4][7] = 2;
-		Task[4][8] = 7;
-		Task[4][9] = 10;
-		/**
-		 * Task 6
-		 */
-		Task[5][0] = 6;
-		Task[5][1] = 3;
-		Task[5][2] = 5;
-		Task[5][3] = 1;
-		Task[5][4] = 8;
-		Task[5][5] = 9;
-		Task[5][6] = 4;
-		Task[5][7] = 2;
-		Task[5][8] = 7;
-		Task[5][9] = 10;
-		/**
-		 * Task 7
-		 */
-		Task[6][0] = 6;
-		Task[6][1] = 3;
-		Task[6][2] = 5;
-		Task[6][3] = 1;
-		Task[6][4] = 8;
-		Task[6][5] = 9;
-		Task[6][6] = 4;
-		Task[6][7] = 2;
-		Task[6][8] = 7;
-		Task[6][9] = 10;
-		/**
-		 * Task 8
-		 */
-		Task[7][0] = 6;
-		Task[7][1] = 3;
-		Task[7][2] = 5;
-		Task[7][3] = 1;
-		Task[7][4] = 8;
-		Task[7][5] = 9;
-		Task[7][6] = 4;
-		Task[7][7] = 2;
-		Task[7][8] = 7;
-		Task[7][9] = 10;
-		/**
-		 * Task 9
-		 */
-		Task[8][0] = 6;
-		Task[8][1] = 3;
-		Task[8][2] = 5;
-		Task[8][3] = 1;
-		Task[8][4] = 8;
-		Task[8][5] = 9;
-		Task[8][6] = 4;
-		Task[8][7] = 2;
-		Task[8][8] = 7;
-		Task[8][9] = 10;
-		/**
-		 * Task 10
-		 */
-		Task[9][0] = 6;
-		Task[9][1] = 3;
-		Task[9][2] = 5;
-		Task[9][3] = 1;
-		Task[9][4] = 8;
-		Task[9][5] = 9;
-		Task[9][6] = 4;
-		Task[9][7] = 2;
-		Task[9][8] = 7;
-		Task[9][9] = 10;
+		//initializing the scanner for user input
+		Scanner inputScanner = new Scanner(System.in);
+		
+		//asking for the runs of montecarlo simulation user wants to do
+		System.out.println("How many MonteCarlo runs do you want to do?");
+		monteCarloEstimateSize = inputScanner.nextInt();
+		//initializing the montecarlo estimate array
+		monteCarloEstimates = new int[monteCarloEstimateSize];
+		
+		//asking for the number of tasks
+		System.out.println("How many Tasks do you want to start?");
+		taskSize = inputScanner.nextInt();
+		//asking for the number of estimates per tasks
+		System.out.println("How many estimates per task do you want to provide?");
+		taskEstimateSize = inputScanner.nextInt();
+		//initializing the task arrays
+		Task = new int[taskSize][taskEstimateSize];
+		
+		//taking all the estimates for all tasks 
+		//to initialize the tasks and get started
+		for (int eachTask=0; eachTask<taskSize; eachTask++){
+			for (int eachTaskEstimate=0; eachTaskEstimate<taskEstimateSize; eachTaskEstimate++){
+				System.out.println("Provide Task "+(eachTask+1)+" Estimate "+(eachTaskEstimate+1)+" in # of weeks between 1 and 10");
+				Task[eachTask][eachTaskEstimate] = inputScanner.nextInt();
+				//invalid estimate input
+				if (Task[eachTask][eachTaskEstimate]>10 || Task[eachTask][eachTaskEstimate]<1){
+					//inform the user about the invalid input
+					System.out.println("Input the estimate between 1 and 10");
+					//get the input for the current task estimate again
+					eachTaskEstimate--;
+				}
+			}
+		}
+		// closing the scanner
+		inputScanner.close();
 	}
 	
 	/**
@@ -180,13 +75,20 @@ public class ProjectTaskEstimates {
 	
 	void projectEstimate(){
 		monteCarloEstimateCalculation();
+		//sorting the estimate array
 		java.util.Arrays.sort(monteCarloEstimates);
+		//Maximum estimate 
 		System.out.println("Maximum estimate "+monteCarloEstimates[monteCarloEstimateSize-1]+" weeks");
+		// minimum estimate
 		System.out.println("Minimum estimate "+monteCarloEstimates[0]+" weeks");
-		System.out.println("95th Percentile estimate "+estimatePercentile(95)+" weeks");
-		System.out.println("90th Percentile estimate "+estimatePercentile(90)+" weeks");
-		System.out.println("80th Percentile estimate "+estimatePercentile(80)+" weeks");
-		System.out.println("70th Percentile estimate "+estimatePercentile(70)+" weeks");
+		//calculating the 95th percentile max estimate
+		System.out.println("95th Percentile max estimate "+estimatePercentile(95)+" weeks");
+		//calculating the 90th percentile max estimate
+		System.out.println("90th Percentile max estimate "+estimatePercentile(90)+" weeks");
+		//calculating the 80th percentile max estimate
+		System.out.println("80th Percentile max estimate "+estimatePercentile(80)+" weeks");
+		//calculating the 70th percentile max estimate
+		System.out.println("70th Percentile max estimate "+estimatePercentile(70)+" weeks");
 	}
 	
 	/**
@@ -195,12 +97,18 @@ public class ProjectTaskEstimates {
 	void monteCarloEstimateCalculation(){
 		int totalProjectEstimate = 0;
 		Random randomNumber = new Random();
+		// each run of the monte carlo simulation
 		for (int eachMonteCarloEstimate=0; eachMonteCarloEstimate<monteCarloEstimateSize; eachMonteCarloEstimate++){
+			// for every task in each monte carlo simulation
 			for (int eachTask=0; eachTask<taskSize; eachTask++){
+				// randomly picking one estimate for each task
 				int randomEstimateForTask = randomNumber.nextInt(taskEstimateSize);
+				// adding the randomly picked estimate of the tak to the entire project estimate
 				totalProjectEstimate += Task[eachTask][randomEstimateForTask];
 			}
+			// store the total Project Estimate in the Monte Carlo Estimate result array
 			monteCarloEstimates[eachMonteCarloEstimate] = totalProjectEstimate;
+			//initialize the totalProject Estimtate for the next run
 			totalProjectEstimate=0;
 		}
 	}
@@ -211,6 +119,7 @@ public class ProjectTaskEstimates {
 	int estimatePercentile(int percentile){
 		//calculating the index of array for the percentile 
 		double index = ((double)percentile/100)*monteCarloEstimateSize;
+		// returning the max value for the given percentile
 		return monteCarloEstimates[(int)index-1];
 	}
 }
