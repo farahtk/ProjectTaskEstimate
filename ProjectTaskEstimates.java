@@ -6,7 +6,7 @@ public class ProjectTaskEstimates {
 	 */
 	int[][] Task;
 	int[] monteCarloEstimates;
-	final int monteCarloEstimateSize = 100;
+	final int monteCarloEstimateSize = 1000;
 	final int taskSize = 10;
 	final int taskEstimateSize = 10;
 	
@@ -28,7 +28,7 @@ public class ProjectTaskEstimates {
 		PTE.testProjectEstimate();
 	}
 	/**
-	 * Input Function
+	 * test Function
 	 */
 	void testProjectEstimate(){
 		//calling the task estimae initializer function
